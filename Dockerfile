@@ -2,6 +2,10 @@
 FROM python:3.11-slim AS builder
 RUN apt-get update && apt-get upgrade -y
 WORKDIR /app
+
+# Upgrade the internal base image utilities to patch internal CVEs
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel jaraco.context
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
