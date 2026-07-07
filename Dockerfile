@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Alpine Linux for minimal runtime
 FROM python:3.11-alpine
-RUN apk update && apk upgrade -y
+RUN apk update && apk upgrade
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 WORKDIR /app
 
